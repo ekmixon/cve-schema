@@ -52,25 +52,28 @@ def main(argv):
                         dtree = dtree.replace( inputdir, '')
                     opath = outputpath + dtree
                     try:
-                        CVE_Convert(filepath, opath)    
+                        CVE_Convert(filepath, opath)
                     except:
-                        problemfiles[filepath] = "" + str(sys.exc_info()[0]) + " -- " + str(sys.exc_info()[1]) + " -- "
-                CVECount += 1    
+                        problemfiles[
+                            filepath
+                        ] = f"{str(sys.exc_info()[0])} -- {str(sys.exc_info()[1])} -- "
+
+                CVECount += 1
                 if CVECount % 250 == 0: spinner.next()
-        
+
         # insert blank lines to clear spinner    
         print('FINISHED processed directory', inputdir)
         print('')
         print('PROBLEM FILE REPORT')
         if problemfiles:
             print("JSON files that failed to convert: ")
-            for fname in problemfiles:
+            for fname, value in problemfiles.items():
                 print(fname)
-                print("    ", problemfiles[fname])
+                print("    ", value)
         else:
             print("All JSON files converted.")
         print('')
-        
+
         print("Extra keys encountered")
         if extra_keys:
             for e in extra_keys:                
@@ -83,12 +86,12 @@ def main(argv):
                 print( e )
                 for edk in keys_used[e]:
                     print("    ", edk)
-                
+
         print('')
         print('Saw STATEs')
         for s in states_processed:
             print(s)
-            
+
         print('')
         if extra_keys:
             print('')
@@ -104,11 +107,11 @@ def main(argv):
         print('Done')
 
 
-        
+
     else:
         print('incorrect input parameters')
         print ('USAGE python cve4to5up.py -i <inputfile>|-d <inputdirectory> -o <outputpath>')    
-        
+
     sys.exit(0)
             
             

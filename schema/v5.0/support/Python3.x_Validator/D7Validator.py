@@ -20,7 +20,7 @@ if len(sys.argv) == 3:
     print('')
     print('---------------------------------------------')
     print('')
-  
+
   if hasErrors > 0:
     print('Found ', hasErrors, ' error(s)')
   else:

@@ -41,7 +41,7 @@ def jsonvalidation(json_doc_path, json_schema_path):
             json_doc = json.load(fp)
         except ValueError as err:
             sys.stderr.write("Failed to parse JSON : \n")
-            sys.stderr.write("  " + str(err) + "\n")
+            sys.stderr.write(f"  {str(err)}" + "\n")
             raise SystemExit
 
     try:
